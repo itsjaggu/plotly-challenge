@@ -158,7 +158,40 @@ function loadGauge(selectedID) {
     if (selectedID == null) {
         selectedID = d3.select("#selDataset option:checked").property("value");
     }
-    var gaugeDiv = d3.select("#gauge");
+    d3.json("data/samples.json").then((importedData) => {
+        var data = importedData.metadata;
+        var filteredData = data.filter(row => row.id == selectedID);
+        console.log(filteredData);
+        Object.entries(filteredData[0]).forEach(([key, value]) => {
+            if (key == "wfreq") {
+                var gaugeValue = value;
+            }
+        });
+
+        var trace = {
+            domain: { x: [0, 1], y: [0, 1] },
+            value: gaugeValue,
+            title: { text: "Scrubs per Week" },
+            type: "indicator",
+            mode: "gauge+number"
+        };
+    
+        // Create the data array for our plot
+        var chartData = [trace];
+    
+        // Define the plot layout
+        var layout = {
+            margin: {
+            l: 100,
+            r: 100,
+            t: 100,
+            b: 100
+            }
+        };
+    
+        // Plot the chart to a div tag with id "bar-plot"
+        Plotly.newPlot("gauge", chartData, layout);
+    });
     
 }
 
