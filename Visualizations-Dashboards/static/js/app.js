@@ -1,5 +1,13 @@
 var dropdownMenu = d3.select("#selDataset");
 
+function init() {
+    loadIDs();
+    barPlot(null);
+    loadDemographics(null);
+    loadBubble(null);
+    loadGauge(null);
+}
+
 function loadIDs() {
     // Use D3 to select the dropdown menu
     //var dropdownMenu = d3.select("#selDataset");
@@ -11,15 +19,6 @@ function loadIDs() {
         });
     });
 }
-function init() {
-    loadIDs();
-    // Assign the value of the dropdown menu option to a variable
-    //var selectedValue = d3.select("#selDataset option:checked").property("value");
-    barPlot(null);
-    loadDemographics(null);
-    loadBubble(null);
-    loadGauge(null);
-}
 
 function optionChanged(selectedValue) {
     console.log(selectedValue);
@@ -28,6 +27,7 @@ function optionChanged(selectedValue) {
     loadBubble(selectedValue);
     loadGauge(selectedValue);
 }
+
 // Use d3.json() to fetch data from JSON file
 // Incoming data is internally referred to as importedData
 function barPlot(selectedID) {

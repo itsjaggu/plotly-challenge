@@ -1,4 +1,4 @@
-/* function loadGauge(selectedID) {
+function loadGauge(selectedID) {
     var gaugeValue = 0;
     d3.json("data/samples.json").then((importedData) => {
         if (selectedID == null) {
@@ -16,15 +16,15 @@
         var trace = {
             domain: { x: [0, 1], y: [0, 1] },
             value: gaugeValue,
-            title: { text: "Scrubs per Week" },
+            title: { text: "<b>Belly Button Washing Frequency</b><br>Scrubs per Week" },
             type: "indicator",
             mode: "gauge+number",
             gauge: { 
                 axis: { 
                         range: [null, 9],
                         ticks: "",
-                        tickvals: [1,2,3,4,5,6,7,8,9],
-                        ticktext: ["0-1", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8", "8-9"]
+                        tickvals: [0,1,2,3,4,5,6,7,8,9],
+                        ticktext: [0,1,2,3,4,5,6,7,8,9]
                     } ,
                 
                 steps: [
@@ -59,9 +59,9 @@
         Plotly.newPlot("gauge", chartData, layout);
     });
     
-} */
+}
 
-function loadGauge(selectedID){
+/* function loadGauge(selectedID){
     var gaugeValue = 0;
     d3.json("data/samples.json").then((importedData) => {
         if (selectedID == null) {
@@ -76,6 +76,7 @@ function loadGauge(selectedID){
             }
         });
     });
+
     // pie chart converted to gauge chart
     var trace = {
       type: 'pie',
@@ -107,8 +108,6 @@ function loadGauge(selectedID){
       showlegend: false,
       hoverinfo: "skip"
     }
-  
-    // the needle (triangular version)
   
     // add weights to the degrees to correct needle
     var weight = 0;
@@ -164,5 +163,5 @@ function loadGauge(selectedID){
             }
     };
   
-    Plotly.newPlot("gauge", [traceGauge, needleStart], gaugeLayout);
-  }
+    Plotly.newPlot("gauge", [trace, needleStart], gaugeLayout);
+  } */
